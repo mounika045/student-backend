@@ -1,11 +1,14 @@
-# Use Java runtime
-FROM openjdk:17-jdk-slim
+# Use official Java image
+FROM eclipse-temurin:17-jdk
 
-# Set working directory
+# Create app directory
 WORKDIR /app
 
 # Copy jar file
 COPY target/*.jar app.jar
 
-# Run the application
+# Expose port
+EXPOSE 8080
+
+# Run Spring Boot
 ENTRYPOINT ["java","-jar","app.jar"]
